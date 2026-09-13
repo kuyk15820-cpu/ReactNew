@@ -1,42 +1,70 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* { 
+  box-sizing: border-box; 
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #14131d;
+  color: #e2e8f0;
+  min-height: 100vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Header Navbar ด้านบน */
+.top-navbar {
+  background: #1f1d2b;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2d2b3a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+.navbar-brand { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+.user-controls { display: flex; align-items: center; gap: 15px; color: #94a3b8; }
+.user-avatar { width: 32px; height: 32px; border-radius: 50%; background: #6366f1; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+/* Layout พื้นที่เนื้อหาหลัก */
+.main-viewport { padding-bottom: 90px; }
+.main-content { padding: 24px; max-width: 1200px; width: 100%; margin: 0 auto; }
+.page-title { margin: 0 0 20px 0; font-size: 20px; font-weight: 600; color: #f8fafc; }
 
-.card {
-  padding: 2em;
-}
+/* Dashboard Cards & Grid */
+.stats-section { margin-bottom: 28px; }
+.stats-title { font-size: 14px; color: #94a3b8; margin-bottom: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 
-.read-the-docs {
-  color: #888;
+.stat-card {
+  background: #272535;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+.stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.stat-info { display: flex; flex-direction: column; }
+.stat-info .title { color: #94a3b8; font-size: 13px; font-weight: 500; margin-bottom: 10px; }
+.stat-info .value { font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 6px; line-height: 1; }
+.stat-info .subtitle { font-size: 12px; color: #64748b; }
+
+.stat-icon-box { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.icon-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+.icon-blue   { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+.icon-green  { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+.icon-yellow { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+.icon-red    { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.icon-gray   { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+
+/* Capsule Floating Navbar ด้านล่าง */
+.capsule-nav-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; }
+.capsule-nav-bar { display: flex; background-color: #1e1d2b; padding: 6px 8px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); gap: 6px; }
+.capsule-nav-item { display: flex; flex-direction: column; align-items: center; background: none; border: none; padding: 10px 22px; color: #8b8d9b; font-size: 13px; font-weight: 500; border-radius: 30px; cursor: pointer; transition: all 0.25s ease; min-width: 85px; gap: 6px; }
+.capsule-nav-item i { font-size: 18px; }
+.capsule-nav-item:hover { color: #d1d5db; }
+.capsule-nav-item.active { background-color: #2a293a; color: #6366f1; }
+.capsule-nav-item.active i { color: #6366f1; transform: scale(1.1); }
