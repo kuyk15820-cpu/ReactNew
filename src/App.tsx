@@ -1,32 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import Navbar from './Navbar'
+import Dashboard from './Dashboard'
+// import KeyManagement from './components/KeyManagement'
+// import PackageManagement from './components/PackageManagement'
+// import DeviceManagement from './components/DeviceManagement'
+
+// กำหนด Type ของ Tab ทั้งหมดในระบบ
+export type TabType = 'dashboard' | 'key' | 'device' | 'package'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeTab, setActiveTab] = useState<TabType>('dashboard')
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      {/* Top Header Navbar */}
+      <div className="top-navbar">
+        <div className="navbar-brand">
+          <i className="fa-solid fa-shield-halved" style={{ color: '#6366f1' }}></i> API PANEL
+        </div>
+        <div className="user-controls">
+          <i className="fa-solid fa-moon"></i>
+          <div className="user-avatar">A</div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      {/* Dynamic Content Section */}
+      <main className="main-viewport">
+        {activeTab === 'dashboard' && <Dashboard />}
+        {activeTab === 'key' && <div>หน้าจัดการ Key (รอไฟล์ key.php)</div>}
+        {activeTab === 'device' && <div>หน้าจัดการ Device (รอไฟล์ device.php)</div>}
+        {activeTab === 'package' && <div>หน้าจัดการ Package (รอไฟล์ package.php)</div>}
+      </main>
+
+      {/* Bottom Floating Capsule Navbar */}
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   )
 }
