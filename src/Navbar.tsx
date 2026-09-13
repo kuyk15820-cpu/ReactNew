@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabType } from '../App'
+import { TabType } from './App'
 
 interface NavbarProps {
   activeTab: TabType
