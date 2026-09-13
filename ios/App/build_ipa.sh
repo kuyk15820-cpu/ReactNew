@@ -7,8 +7,9 @@ mkdir -p build
 echo "Build Started!"
 echo
 
-# 1. เช็กหา Workspace ก่อน (สำหรับ Capacitor + Pods) ถ้าไม่มีค่อยใช้ Project
-if [ -d "App.xcworkspace" ]; filename="App.xcworkspace"; BUILD_FLAG="-workspace App.xcworkspace";
+# 1. เช็กหา Workspace (สำหรับ Capacitor + Pods) หรือ Project
+if [ -d "App.xcworkspace" ]; then
+  BUILD_FLAG="-workspace App.xcworkspace"
 elif ls -d *.xcworkspace >/dev/null 2>&1; then
   WORKSPACE_FILE=$(ls -d *.xcworkspace | head -n 1)
   BUILD_FLAG="-workspace $WORKSPACE_FILE"
